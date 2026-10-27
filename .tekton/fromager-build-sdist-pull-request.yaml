@@ -12,11 +12,11 @@ metadata:
       == "main" && ( "tekton/tasks/python-fromager-build-sdist/0.2/***".pathChanged()
       || ".tekton/fromager-build-sdist-pull-request.yaml".pathChanged() )
   labels:
-    appstudio.openshift.io/application: tekton-bundles
+    appstudio.openshift.io/application: build-tasks
     appstudio.openshift.io/component: fromager-build-sdist
     pipelines.appstudio.openshift.io/type: build
   name: fromager-build-sdist-on-pull-request
-  namespace: lightwell-python-tenant
+  namespace: lightwell-catalog-tenant
 spec:
   params:
   - name: git-url
@@ -24,7 +24,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/lightwell-python-tenant/tekton-bundles/fromager-build-sdist:on-pr-{{revision}}
+    value: quay.io/redhat-user-workloads/lightwell-catalog-tenant/build-tasks/fromager-build-sdist:on-pr-{{revision}}
   - name: image-expires-after
     value: 5d
   - name: dockerfile
