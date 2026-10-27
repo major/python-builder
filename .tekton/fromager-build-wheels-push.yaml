@@ -11,11 +11,11 @@ metadata:
       == "main" && ( "tekton/tasks/python-fromager-build-wheels/0.2/***".pathChanged()
       || ".tekton/fromager-build-wheels-push.yaml".pathChanged() )
   labels:
-    appstudio.openshift.io/application: tekton-bundles
+    appstudio.openshift.io/application: build-tasks
     appstudio.openshift.io/component: fromager-build-wheels
     pipelines.appstudio.openshift.io/type: build
   name: fromager-build-wheels-on-push
-  namespace: lightwell-python-tenant
+  namespace: lightwell-catalog-tenant
 spec:
   params:
   - name: git-url
@@ -23,7 +23,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/lightwell-python-tenant/tekton-bundles/fromager-build-wheels:{{revision}}
+    value: quay.io/redhat-user-workloads/lightwell-catalog-tenant/build-tasks/fromager-build-wheels:{{revision}}
   - name: dockerfile
     value: Dockerfile
   - name: path-context
